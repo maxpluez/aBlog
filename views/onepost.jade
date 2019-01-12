@@ -1,0 +1,18 @@
+head
+  title Post
+body
+  -var postobj=obj
+  h1= "Post " + postobj._id
+  hr
+  h2= "Posted by: "+postobj.username
+  p= "on "+postobj.date
+  hr
+  h3= postobj.title
+  p= postobj.body
+  hr
+  a(href="./")
+    | Back
+  br
+  a(href="./rm/"+postobj._id)
+    | Delete this post
+  p Remember to copy the ID!

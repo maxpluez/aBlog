@@ -1,0 +1,16 @@
+head
+  title Add a Post
+  link(rel='stylesheet', href='/stylesheets/addpost_style.css')
+body
+  form(method="post")
+    | Title:
+    br
+    input(type="text", id="title", name="title")
+    br
+    | Post:
+    br
+    textarea(id="body", name="body", placeholder="write something...", style="height:200px")
+    br
+    input(type="submit", value="submit")
+  a(href="./")
+    | See all posts

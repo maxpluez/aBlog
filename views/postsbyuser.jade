@@ -1,0 +1,21 @@
+head
+  title Posts
+body
+  h1= "Posts by "+username
+  hr
+  hr
+  - var postsarr = arr
+  - for(var i=0;i<postsarr.length;i++)
+    h3= postsarr[i].title
+    p= postsarr[i].body
+    br
+    hr(style="dotted")
+    p= "Posted on " + postsarr[i].date
+    p= "Post ID: " + postsarr[i]._id
+    hr
+    a(href="/posts/rm/"+postsarr[i]._id)
+      | Delete this post
+    hr
+    hr
+  a(href="./")
+    | Back
