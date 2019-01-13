@@ -3,7 +3,7 @@ head
   link(rel='stylesheet', href='/stylesheets/allposts_style.css')
 body
   h1 Hi! #{name}
-  h1 Welcome to Max's Blog!
+  h1 Welcome to Chat Room!
   hr
   div(class="dropdown" style="float:right")
     button(class="dropbtn") User
@@ -11,31 +11,30 @@ body
       a(href="../posts/add")
         | Add a post
       br
-      a(href="../posts/delete")
-        | Delete a post
-      br
       a(href="../users")
         | Login
+      br
+      a(href="../users/signup")
+        | Sign Up
       br
       a(href="../users/logout")
         | Logout
   div(class:"search")
     form(method="post")
-      | Search Post by ID: 
-      input(type="text", id="id", name="id", placeholder="Input ID..")
-      br
-      | Search Post by Username: 
-      input(type="text", id="username", name="username", placeholder="Input Username..")
+      | Search: 
+      input(type="text", id="id", name="id")
       br
       input(type="submit", name="submit", value="Search")
     hr
   div(class="posts")
     - var myobjs = objs
+    - var un = currentUN
     - for(var i=0;i<myobjs.length;i++)
-      h3= "Posted by: "+myobjs[i].username
+      p= "Posted by: "+myobjs[i].username
       h3= myobjs[i].title
       p= myobjs[i].body
       br
       p(style="font-size:10px float:right")= "Posted on "+myobjs[i].date
-      p= "Post ID: " + myobjs[i]._id
+      - if(myobjs[i].username==un)
+       a(href="/posts/rm/"+myobjs[i]._id) Delete this post
       hr

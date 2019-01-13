@@ -1,9 +1,8 @@
 head
   title Posts
-  link(rel='stylesheet', href='/stylesheets/allposts_style.css')
+  link(rel="stylesheet", href="/stylesheets/allposts_style.css")
 body
-  h1= "Posts by "+username
-  hr
+  h1 Related Posts
   hr
   - var postsarr = arr
   - for(var i=0;i<postsarr.length;i++)
@@ -12,10 +11,6 @@ body
     br
     hr(style="dotted")
     p= "Posted on " + postsarr[i].date
-    hr
-    a(href="/posts/rm/"+postsarr[i]._id)
-      | Delete this post
-    hr
     hr
   a(href="./")
     | Back
