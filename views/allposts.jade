@@ -10,18 +10,17 @@ body
     div(class="dropdown-content" style="right:0")
       a(href="../posts/add")
         | Add a post
-      - var loggedin = loggedin
-      - if(!loggedin)
-       br
-       a(href="../users")
-         | Login
-       br
-       a(href="../users/signup")
-         | Sign Up
-      - if(loggedin)
-       br
-       a(href="../users/logout")
-         | Logout
+      - if(loggedin==false)
+        br
+        a(href="../users")
+          | Login
+        br
+        a(href="../users/signup")
+          | Sign Up
+      - if(loggedin==true)
+        br
+        a(href="../users/logout")
+          | Logout
   div(class:"search")
     form(method="post")
       | Search:
@@ -30,9 +29,13 @@ body
       input(type="submit", name="submit", value="Search")
     hr
   div(class="posts")
+    h2 Welcome! Use the "User" Tab on the Top Right Corner to Get Started!!
+    p Welcome to this chat room! I am a resident of UCLA De Neve Dogwood 3, and I am the creator and administrator of this website. Be sure to avoid sexual, violent, and insulting languages. If you find any bugs, feel free to email me at maxpluez@163.com, or update it at https://github.com/maxpluez/aBlog. Have fun!!! Oh and btw, plz don't hack it :)
+    hr
+  div(class="posts")
     - var myobjs = objs
     - var un = currentUN
-    - for(var i=0;i<myobjs.length;i++)
+    - for(var i=0;i<myobjs.length&&i<20;i++)
       p= "Posted by: "+myobjs[i].username
       h3= myobjs[i].title
       p= myobjs[i].body

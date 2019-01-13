@@ -27,9 +27,11 @@ router.get('/', function(req, res, next) {
   var objs = [];
   var currentUN = req.session.username;
   var loggedin = true;
+  //console.log(req.session.username);
   if(!req.session.username){
     loggedin = false;
   }
+  //console.log(loggedin);
   var cursor = postsdb.collection("posts").find();
   cursor.forEach(function(doc){
     objs.push(doc);
