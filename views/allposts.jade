@@ -10,18 +10,21 @@ body
     div(class="dropdown-content" style="right:0")
       a(href="../posts/add")
         | Add a post
-      br
-      a(href="../users")
-        | Login
-      br
-      a(href="../users/signup")
-        | Sign Up
-      br
-      a(href="../users/logout")
-        | Logout
+      - var loggedin = loggedin
+      - if(!loggedin)
+       br
+       a(href="../users")
+         | Login
+       br
+       a(href="../users/signup")
+         | Sign Up
+      - if(loggedin)
+       br
+       a(href="../users/logout")
+         | Logout
   div(class:"search")
     form(method="post")
-      | Search: 
+      | Search:
       input(type="text", id="id", name="id")
       br
       input(type="submit", name="submit", value="Search")

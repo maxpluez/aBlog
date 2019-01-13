@@ -26,11 +26,15 @@ router.get('/', function(req, res, next) {
   if(req.session!=null){name=req.session.username;}
   var objs = [];
   var currentUN = req.session.username;
+  var loggedin = true;
+  if(!req.session.username){
+    loggedin = false;
+  }
   var cursor = postsdb.collection("posts").find();
   cursor.forEach(function(doc){
     objs.push(doc);
   }, function(){
-    res.render('allposts',{objs:objs, name:name, currentUN:currentUN});
+    res.render('allposts',{objs:objs, name:name, currentUN:currentUN, loggedin:loggedin});
   });
 });
 
