@@ -19,7 +19,7 @@ MongoClient.connect(url, function(err, db) {
   postsdb = db.db("blogs");
 });
 
-router.use(cookieSession({keys:["fuck"], maxAge:10*60*1000}));
+router.use(cookieSession({keys:["notsecure"], maxAge:10*60*1000}));
 
 router.get('/', function(req, res, next) {
   var name = "";

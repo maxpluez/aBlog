@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next){
-  res.render('me');
+  res.redirect('portfoliosite/index.html');
 });
 
 router.get('/files/:doc', function(req, res, next){

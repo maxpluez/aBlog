@@ -1,0 +1,50 @@
+head
+  title About Me
+  meta(charset="utf-8")
+  meta(name="description", content="")
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+  link(rel="apple-touch-icon", href="icon.png")
+  link(rel='stylesheet', href='/css/bootstrap.css')
+  link(rel='stylesheet', href='/css/normalize.css')
+  link(rel='stylesheet', href='/css/main.css')
+  meta(name="theme-color", content="#293a80")
+
+body(style="width:100%;")
+  a(href="/me")
+    h1(style="text-align: center; font-size: 375%;" class="computerText") Max Zhang
+  div(class="container")
+    div(class="horiz computerText justify-content-center")
+      a(href="/me/files/MaxZhangResumeFall19.pdf")
+        p(class="headers") RESUME
+      a(href="exampleWork.html")
+        p(class="headers") PROJECTS
+      a(href="https://github.com/maxpluez")
+        p(class="headers") GITHUB
+      a(href="https://www.linkedin.com/in/maxpluez/")
+        p(class="headers") LINKEDIN
+  div(class="imagecontainer")
+    img(class="resizecenter", src="images/me3.jpeg", alt="Sorry if you can't see this fun image. It's me going to Hogwarts.")
+  p(style="text-align: center;") (Me going to Hogwarts)
+
+  a(href="/me/files/Final.pdf")
+    | Project1 (Research Paper: A VEB Tree Implementation of Scan-line Filling Algorithm)
+  br
+  br
+  a(href="/")
+    | Project2 (aBlog)
+  br
+  br
+  a(href="https://github.com/maxpluez/slidep")
+    | Project3 (Slide+)
+  br
+  br
+  a(href="https://devpost.com/software/pair-r15tbi")
+    | Project4 (Pair)
+  br
+  br
+  a(href="/me/files/CodingSample1Posts.js")
+    | Coding Sample 1: posts.js
+  br
+  br
+  a(href="/me/files/CodingSample2GameActors.cpp")
+    | Coding Sample 2: GameActors.cpp

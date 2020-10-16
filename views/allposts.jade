@@ -2,9 +2,15 @@ head
   title Blog
   link(rel='stylesheet', href='/stylesheets/allposts_style.css')
 body
-  h1 Hi! #{name}
-  h1 Welcome to Chat Room!
-  hr
+  div(class="search", style="float:left")
+    form(method="post", class="searchentry")
+      input(type="text", id="id", name="id", class="searchentry")
+      input(type="submit", name="submit", value="Search", class="searchentry")
+  div(class="titles")
+    h1(class="titleentry", align="center") aBlog
+    h2(class="titleentry", align="center") Max's Personal Space
+  div(class="welcome")
+    h2(class="welcomemessage") Welcome! #{name}
   div(class="dropdown" style="float:right")
     button(class="dropbtn") User
     div(class="dropdown-content" style="right:0")
@@ -21,28 +27,34 @@ body
         br
         a(href="../users/logout")
           | Logout
-  div(class:"search")
-    form(method="post")
-      | Search:
-      input(type="text", id="id", name="id")
+  div(class="intro")
+    h3 Use the "User" Tab on the Top Right Corner to Get Started!!
+    p
+      | Welcome to my blog space! I am a second-year UCLA CS student, and I am the creator and administrator of this website.
       br
-      input(type="submit", name="submit", value="Search")
-    hr
-  div(class="posts")
-    h2 Welcome! Use the "User" Tab on the Top Right Corner to Get Started!!
-    p Welcome to this chat room! I am a resident of UCLA De Neve Dogwood 3, and I am the creator and administrator of this website. Be sure to avoid sexual, violent, and insulting languages. If you find any bugs, feel free to email me at maxpluez@163.com, or update it at https://github.com/maxpluez/aBlog. Have fun!!! Oh and btw, plz don't hack it :)
-    hr
+      | I will be posting 
+      strong my thoughts, tutorials, and stories
+      |  here, and 
+      strong everyone
+      |  is welcomed to post or comment!
+      br
+      | If you find any bugs, feel free to email me at 
+      a(href="mailto:max.plue.zhang@gmail.com") max.plue.zhang@gmail.com
+      | , or update it at 
+      a(href="https://github.com/maxpluez/aBlog") this Github repo
+      | .
+      br
+      | Have fun!!! Oh and btw, plz don't hack it :)
+    a(href="/me")
+      strong About Max (Developer)
   div(class="posts")
     - var myobjs = objs
     - var un = currentUN
     - for(var i=0;i<myobjs.length&&i<20;i++)
-      p= "Posted by: "+myobjs[i].username
-      h3= myobjs[i].title
-      p= myobjs[i].body
+      p(class="oneauthor")= "Posted by: "+myobjs[i].username
+      h3(class="onetitle")= myobjs[i].title
+      p(class="onecontent")= myobjs[i].body
       br
-      p(style="font-size:10px float:right")= "Posted on "+myobjs[i].date
+      p(style="font-size:10px float:right", class="onetime")= "Posted on "+myobjs[i].date
       - if(myobjs[i].username==un)
        a(href="/posts/rm/"+myobjs[i]._id) Delete this post
-      hr
-  a(href="/me")
-    |About Developer
