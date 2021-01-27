@@ -1,0 +1,146 @@
+body {
+  margin: 0px;
+  padding: 50px;
+  font: 20px "Times New Roman", Times, serif;
+  background-color: #f1d6ab;
+}
+
+.welcome{
+    text-align: center;
+    margin: 25px auto;
+}
+
+.welcomemessage {
+    color: #293a80;
+}
+
+.titles {
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: #e3b04b;
+  margin: 25px auto;
+}
+
+.titleentry{
+  color: #293a80;
+  width: 50%;
+  margin: auto;
+}
+
+.search {
+  position: fixed;
+  background-color: #f1d6ab;
+  left: 0px;
+  top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  /*color: #f1d6ab;*/
+  display: inline-block;
+}
+
+.searchentry {
+    /*color: #f1d6ab;*/
+    background-color: #f1d6ab;
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+form {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.dropbtn {
+  background-color: #537ec5;
+  color: #fff4e4;
+  padding: 10px;
+  font-family: "Lucida Console";
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: fixed;
+  right:5px;
+  top:5px;
+  display: inline-block;
+}
+
+.dropdown-content{
+	display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #00B7FF;
+  font-weight: bold;
+}
+
+.dropdown-content a:hover{
+	background-color: grey;
+}
+
+.dropdown-content a:link{
+	text-decoration: none;
+}
+
+.search{
+	border-radius: 5px;
+}
+
+input[type=text], select {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 0px 0px;
+  display: inline-block;
+  border: 2px solid #293a80;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 30%;
+  background-color: #537ec5;
+  color: #fff4e4;
+  padding: 14px 20px;
+  margin: 0px 0px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.posts{
+    font:18px "Times New Roman", Times, serif;
+    background-color: #eac37b;
+}
+
+.oneauthor{
+    background-color: #e3b04b;
+    padding-up: 10px;
+    padding-down: 10px;
+}
+
+.onetime{
+    background-color: #e3b04b;
+    padding-up:	10px;
+    padding-down: 10px;
+}

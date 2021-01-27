@@ -19,27 +19,37 @@ MongoClient.connect(url, function(err, db) {
   postsdb = db.db("blogs");
 });
 
-router.use(cookieSession({keys:["fuck"], maxAge:10*60*1000}));
+router.use(cookieSession({keys:["notsecure"], maxAge:10*60*1000}));
 
 router.get('/', function(req, res, next) {
   var name = "";
   if(req.session!=null){name=req.session.username;}
   var objs = [];
+  var currentUN = req.session.username;
+  var loggedin = true;
+  //console.log(req.session.username);
+  if(!req.session.username){
+    loggedin = false;
+  }
+  //console.log(loggedin);
   var cursor = postsdb.collection("posts").find();
   cursor.forEach(function(doc){
     objs.push(doc);
   }, function(){
-    res.render('allposts',{objs:objs, name:name});
+    res.render('allposts',{objs:objs, name:name, currentUN:currentUN, loggedin:loggedin});
   });
 });
 
 router.post('/', async function(req, res, next) {
   var mybody = req.body;
   var idsearch = mybody.id;
-  var usernamesearch = mybody.username;
+  //var usernamesearch = mybody.username;
   var promise;
   var postByID;
   var postsByUsername = [];
+  var posts = [];
+  var postsByContent = [];
+  var pushit = false;
   if(idsearch.length==24){
     promise = postsdb.collection("posts").findOne({_id:ObjectId(idsearch)});
     await promise.then(function(msg){
@@ -49,14 +59,48 @@ router.post('/', async function(req, res, next) {
       res.redirect('/posts/'+idsearch);
     }
   }
-  if(usernamesearch!=undefined){
-    postsByUsername = await postsdb.collection("posts").find({username:usernamesearch}).toArray();
+  if(idsearch!=undefined){
+    postsByUsername = await postsdb.collection("posts").find({username:idsearch}).toArray();
     console.log(postsByUsername);
     if(postsByUsername.length!=0){
-      res.render('postsbyuser', {arr:postsByUsername, username:usernamesearch});
+      res.render('postsbyuser', {arr:postsByUsername, username:idsearch});
     }
   }
-  res.render('goback', {errmsg:"ID and username not found."});
+  if(idsearch!=undefined){
+    posts = await postsdb.collection("posts").find().toArray();
+    //console.log(posts);
+    posts.forEach(function(element){
+      pushit = false;
+      for(var i = 0; i < element.title.length; i++){
+        if(element.title.charAt(i).toLowerCase()==idsearch.charAt(0).toLowerCase()){
+          loop1:
+            for(var j = 1; j < idsearch.length; j++){
+              if(element.title.charAt(i+j).toLowerCase() != idsearch.charAt(j).toLowerCase()){break loop1;}
+              if(j == idsearch.length - 1){pushit = true;}
+            }
+        }
+      }
+      if(!pushit){
+        for(var i = 0; i < element.body.length; i++){
+          if(element.body.charAt(i).toLowerCase() == idsearch.charAt(0).toLowerCase()){
+            loop2:
+              for(var j = 1; j < idsearch.length; j++){
+                if(element.body.charAt(i+j).toLowerCase() != idsearch.charAt(j).toLowerCase()){break loop2;}
+                if(j == idsearch.length - 1){pushit = true;}
+              }
+          }
+        }
+      }
+      if(pushit){
+        postsByContent.push(element);
+      }
+    });
+    console.log(postsByContent);
+    if(postsByContent.length!=0){
+      res.render('postsbycontent', {arr:postsByContent});
+    }
+  }
+  res.render('goback', {errmsg:"Result not found."});
 });
 
 

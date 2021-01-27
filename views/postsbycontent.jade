@@ -1,0 +1,16 @@
+head
+  title Posts
+  link(rel="stylesheet", href="/stylesheets/allposts_style.css")
+body
+  h1 Related Posts
+  hr
+  - var postsarr = arr
+  - for(var i=0;i<postsarr.length;i++)
+    h3= postsarr[i].title
+    p= postsarr[i].body
+    br
+    hr(style="dotted")
+    p= "Posted on " + postsarr[i].date
+    hr
+  a(href="./")
+    | Back

@@ -1,5 +1,6 @@
 head
   title Posts
+  link(rel='stylesheet', href='/stylesheets/allposts_style.css')
 body
   h1= "Posts by "+username
   hr
@@ -11,7 +12,6 @@ body
     br
     hr(style="dotted")
     p= "Posted on " + postsarr[i].date
-    p= "Post ID: " + postsarr[i]._id
     hr
     a(href="/posts/rm/"+postsarr[i]._id)
       | Delete this post

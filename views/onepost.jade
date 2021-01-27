@@ -1,5 +1,6 @@
 head
   title Post
+  link(rel='stylesheet', href='/stylesheets/allposts_style.css')
 body
   -var postobj=obj
   h1= "Post " + postobj._id
@@ -15,4 +16,3 @@ body
   br
   a(href="./rm/"+postobj._id)
     | Delete this post
-  p Remember to copy the ID!
